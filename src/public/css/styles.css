@@ -1,0 +1,103 @@
+/* Giao diện cơ bản cho Máy tính */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem 2rem;
+    color: white;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.nav-list li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+/* Ẩn nút ba gạch trên máy tính */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+}
+
+/* --- RESPONSIVE: Dành cho Điện thoại (dưới 768px) --- */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        /* Hiện nút ba gạch */
+    }
+
+    .nav-list {
+        display: none;
+        /* Mặc định ẩn menu trên mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #333;
+    }
+
+    .nav-list.active {
+        display: flex;
+        /* Hiện menu khi người dùng bấm nút */
+    }
+
+    .nav-list li {
+        text-align: center;
+        padding: 1rem 0;
+    }
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+}
+
+.card {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: bold;
+    border-color: #ffc107 #ffc107 #fff;
+}
+
+.nav-tabs .nav-link {
+    color: #555;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #ffc107;
+    border: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="javascripts/javascript.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">MyAsset</div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-list">
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/buyAssetsList">Danh sách mua</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Chi tiết đơn mua</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        Loại tài sản
+                    </th>
+                    <td>
+                        <%= data.tenloaitaisan %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Tài sản
+                    </th>
+                    <td>
+                        <%= data.tentaisan %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Ngày mua
+                    </th>
+                    <td>
+                        <%= new Date(data.ngaymua).toLocaleDateString('vi-VN')%>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Số lượng
+                    </th>
+                    <td>
+                        <%= Number(data.soluong)%>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Giá mua
+                    </th>
+                    <td>
+                        <%= formatVND(data.giamua)%>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Mô tả
+                    </th>
+                    <td>
+                        <%= data.mota%>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Tổng cộng:
+                    </th>
+                    <td>
+                        <%= formatVND(Number(data.soluong) * Number(data.giamua))%>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <form action="/deleteBuyAsset" onsubmit="return confirm('Bạn có chắc muốn xóa đơn mua này không?')"
+                method="post">
+                <input type="text" name="idDetail" value="<%=data.id%>" id="idDetail" hidden>
+                <button type="submit" class="btn btn-danger">Xóa đơn mua</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
